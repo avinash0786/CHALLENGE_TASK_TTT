@@ -17,10 +17,10 @@ app.get("/", async (req,res)=>{
 app.post('/getResult',async (req, res) => {
     console.log("Post called")
     console.log(req.body)
-    const rollNumebrs=req.body.rollNumbers.split(",")
-    console.log(rollNumebrs)
+    const rollNumbers=req.body.rollNumbers.split(",")
+    console.log(rollNumbers)
     let promisResults=[];
-    rollNumebrs.forEach(rol=>{
+    rollNumbers.forEach(rol=>{
         let answer=fetch("https://terriblytinytales.com/testapi?rollnumber="+rol);
         promisResults.push(answer);
     })
@@ -34,7 +34,7 @@ app.post('/getResult',async (req, res) => {
                 .then(ds=>{
                     console.log("Internal res")
                     console.log(ds)
-                    return res.send(ds);
+                    return res.jsonp(ds)
                 })
         })
         .catch(e=>{
