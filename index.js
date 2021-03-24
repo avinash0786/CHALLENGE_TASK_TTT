@@ -19,14 +19,27 @@ app.post('/getResult',async (req, res) => {
     console.log(req.body)
     const rollNumebrs=req.body.rollNumbers.split(",")
     console.log(rollNumebrs)
-    let finalresult={};
-
-    rollNumebrs.forEach(async rol=>{
-        fetch("https://terriblytinytales.com/testapi?rollnumber="+rol);
-        finalresult[rol]=await answer.text();
+    let promisResults=[];
+    rollNumebrs.forEach(rol=>{
+        let answer=fetch("https://terriblytinytales.com/testapi?rollnumber="+rol);
+        promisResults.push(answer);
     })
-
-    return res.send("ok");
+    Promise.all(promisResults)
+        .then(d=>{
+            let lis=[];
+            d.forEach(pr=>{
+                lis.push(Promise.resolve(pr.text().then(ff=>[pr.url.slice(49),ff])))
+            })
+            Promise.all(lis)
+                .then(ds=>{
+                    console.log("Internal res")
+                    console.log(ds)
+                    return res.send(ds);
+                })
+        })
+        .catch(e=>{
+            console.log(e)
+        })
 })
 
 app.listen(process.env.PORT, function(req,result){
