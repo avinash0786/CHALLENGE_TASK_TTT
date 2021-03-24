@@ -1,0 +1,27 @@
+
+    request(requestOptions, (err, response, body) => {
+        console.log(body)
+        if (err) {
+            console.log(err);
+        } else if (response.statusCode === 200) {
+            console.log(body);
+            return res.send(body);
+        } else {
+            console.log(response.statusCode);
+        }
+    });
+
+
+const requestOptions = {
+        url: 'https://terriblytinytales.com/testapi?rollnumber=123"',
+        method: 'GET'
+    };
+
+    // fetch("https://terriblytinytales.com/testapi?rollnumber=123", {method:"GET"})
+    //     .then(res=>{
+    //         console.log(res)
+    //     })
+    //     .then(json=>{
+    //         console.log(json)
+    //         return res.send("ok")
+    //     })
