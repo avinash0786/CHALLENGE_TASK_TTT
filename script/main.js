@@ -4,7 +4,7 @@ async function getMarks(){
     document.getElementById("subButton").style.display="none";
     document.getElementById("wait").style.display="block"
     console.log("Get marks called")
-    const rolls=document.getElementById("rollNumbers").value;
+    const rolls=document.getElementById("rollNumbers").value.match(/\d+/g);
     console.log(rolls)
 
     fetch('/getResult',{

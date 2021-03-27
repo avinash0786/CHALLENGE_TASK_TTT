@@ -17,7 +17,7 @@ app.get("/", async (req,res)=>{
 app.post('/getResult',async (req, res) => {
     console.log("Post called")
     console.log(req.body)
-    const rollNumbers=req.body.rollNumbers.split(",")
+    const rollNumbers=req.body.rollNumbers.split(",");
     console.log(rollNumbers)
     let promisResults=[];
     rollNumbers.forEach(rol=>{
