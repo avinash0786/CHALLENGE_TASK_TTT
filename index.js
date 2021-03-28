@@ -1,13 +1,10 @@
 const express=require("express");
 require("dotenv").config();
 const fetch = require('node-fetch');
-
 const path=require("path")
-const cors = require('cors');
 const bodyparser= require('body-parser');
 
 const app=express();
-app.use(cors());
 app.use(express.static(path.join(__dirname,"./script")));
 app.use(bodyparser.urlencoded({extended:true}));
 

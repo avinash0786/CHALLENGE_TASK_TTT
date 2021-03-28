@@ -1,10 +1,19 @@
 console.log("Main js connect..");
 
 async function getMarks(){
+    document.getElementById('error').style.display="none";
     document.getElementById("subButton").style.display="none";
     document.getElementById("wait").style.display="block"
     console.log("Get marks called")
     const rolls=document.getElementById("rollNumbers").value.match(/\d+/g);
+    if (rolls==null) {
+        console.log("Null input")
+        document.getElementById('error').style.display="block";
+        document.getElementById('error').innerText="Error: Enter correct input format.";
+        document.getElementById("subButton").style.display="block";
+        document.getElementById("wait").style.display="none"
+        return;
+    }
     console.log(rolls)
 
     fetch('/getResult',{
@@ -27,11 +36,11 @@ async function getMarks(){
             row.style.border="3px solid grey"
             let th1=row.insertCell()
             let th2=row.insertCell()
-            th1.style.border="3px solid BLUE";
-            th2.style.border="3px solid Blue";
+            th1.style.border="3px solid BLACK";
+            th2.style.border="3px solid BLACK";
             th1.style.padding="5px";th2.style.padding="5px";
             th1.appendChild(document.createTextNode("Roll no"));
-            th2.appendChild(document.createTextNode("Marks"));
+            th2.appendChild(document.createTextNode("Result"));
 
             for(let i=0;i<fin.length;i++){
                 console.log(fin[i][0]+"  "+fin[i][1]);
