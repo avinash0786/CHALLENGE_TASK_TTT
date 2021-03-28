@@ -1,7 +1,7 @@
 # CHALLENGE_TASK Terribly Tiny Tales
 **`Avinash Kumar 11804771`**<br>
 
-Hosted on Herku [https://avinash11804771.herokuapp.com/](https://avinash11804771.herokuapp.com/)
+Hosted on Heroku [https://avinash11804771.herokuapp.com/](https://avinash11804771.herokuapp.com/)
 <br>This a implementation of API
 `https://terriblytinytales.com/testapi?rollnumber=123`
 <hr>

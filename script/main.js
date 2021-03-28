@@ -5,7 +5,9 @@ async function getMarks(){
     document.getElementById("subButton").style.display="none";
     document.getElementById("wait").style.display="block"
     console.log("Get marks called")
+
     const rolls=document.getElementById("rollNumbers").value.match(/\d+/g);
+
     if (rolls==null) {
         console.log("Null input")
         document.getElementById('error').style.display="block";
